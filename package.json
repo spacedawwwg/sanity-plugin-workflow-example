@@ -1,14 +1,14 @@
 {
-  "name": "sanity-plugin-workflow",
-  "version": "1.0.4",
+  "name": "sanity-plugin-workflow-spacedawwwg",
+  "version": "1.0.6",
   "description": "A demonstration of a custom content publishing workflow using Sanity.",
   "keywords": [
     "sanity",
     "sanity-plugin"
   ],
-  "homepage": "https://github.com/sanity-io/sanity-plugin-workflow#readme",
+  "homepage": "https://github.com/spacedawwwg/sanity-plugin-workflow#readme",
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-plugin-workflow/issues"
+    "url": "https://github.com/spacedawwwg/sanity-plugin-workflow/issues"
   },
   "repository": {
     "type": "git",
@@ -20,14 +20,14 @@
     ".": {
       "types": "./lib/index.d.ts",
       "source": "./src/index.ts",
-      "require": "./lib/index.js",
-      "import": "./lib/index.esm.js",
-      "default": "./lib/index.esm.js"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./package.json": "./package.json"
   },
-  "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "source": "./src/index.ts",
   "types": "./lib/index.d.ts",
   "files": [
