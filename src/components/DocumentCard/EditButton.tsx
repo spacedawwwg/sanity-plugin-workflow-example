@@ -1,5 +1,6 @@
-import {Button} from '@sanity/ui'
 import {EditIcon} from '@sanity/icons'
+import {Button} from '@sanity/ui'
+import React from 'react'
 import {useRouter} from 'sanity/router'
 
 type EditButtonProps = {
@@ -8,7 +9,7 @@ type EditButtonProps = {
   disabled?: boolean
 }
 
-export default function EditButton(props: EditButtonProps) {
+export default function EditButton(props: EditButtonProps): React.JSX.Element {
   const {id, type, disabled = false} = props
   const {navigateIntent} = useRouter()
 

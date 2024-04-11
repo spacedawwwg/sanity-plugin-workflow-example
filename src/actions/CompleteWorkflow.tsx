@@ -1,11 +1,13 @@
 import {CheckmarkIcon} from '@sanity/icons'
-import {useCallback} from 'react'
+import React, {useCallback} from 'react'
 import {DocumentActionProps, useClient} from 'sanity'
 
 import {useWorkflowContext} from '../components/WorkflowContext'
 import {API_VERSION} from '../constants'
 
-export function CompleteWorkflow(props: DocumentActionProps) {
+export function CompleteWorkflow(
+  props: DocumentActionProps
+): React.JSX.Element | null {
   const {id} = props
   const {metadata, loading, error, states} = useWorkflowContext(id)
   const client = useClient({apiVersion: API_VERSION})
@@ -26,6 +28,8 @@ export function CompleteWorkflow(props: DocumentActionProps) {
   const isLastState = state?.id === states[states.length - 1].id
 
   return {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     icon: CheckmarkIcon,
     type: 'dialog',
     disabled: loading || error || !isLastState,

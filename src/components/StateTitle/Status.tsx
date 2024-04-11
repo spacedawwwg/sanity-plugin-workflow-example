@@ -1,12 +1,12 @@
-import React from 'react'
 import {Box, Text, Tooltip} from '@sanity/ui'
+import React from 'react'
 
 type StatusProps = {
   text: string
   icon: React.ComponentType
 }
 
-export function Status(props: StatusProps) {
+export function Status(props: StatusProps): React.JSX.Element {
   const {text, icon} = props
   const Icon = icon
 

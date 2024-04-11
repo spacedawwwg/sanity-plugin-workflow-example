@@ -1,10 +1,10 @@
-import React from 'react'
 import {useToast} from '@sanity/ui'
-import {UserSelectMenu} from 'sanity-plugin-utils'
+import React from 'react'
 import {useClient} from 'sanity'
+import {UserSelectMenu} from 'sanity-plugin-utils'
 
-import {User} from '../types'
 import {API_VERSION} from '../constants'
+import {User} from '../types'
 
 type UserAssignmentProps = {
   userList: User[]
@@ -12,7 +12,9 @@ type UserAssignmentProps = {
   documentId: string
 }
 
-export default function UserAssignment(props: UserAssignmentProps) {
+export default function UserAssignment(
+  props: UserAssignmentProps
+): React.JSX.Element {
   const {assignees, userList, documentId} = props
   const client = useClient({apiVersion: API_VERSION})
   const toast = useToast()

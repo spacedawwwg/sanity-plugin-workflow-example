@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import {definePlugin, DocumentActionProps, isObjectInputProps} from 'sanity'
 
 import {AssignWorkflow} from './actions/AssignWorkflow'

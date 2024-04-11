@@ -35,7 +35,9 @@ type WorkflowToolProps = {
   tool: Tool<WorkflowConfig>
 }
 
-export default function WorkflowTool(props: WorkflowToolProps) {
+export default function WorkflowTool(
+  props: WorkflowToolProps
+): React.JSX.Element {
   const {schemaTypes = [], states = []} = props?.tool?.options ?? {}
 
   const isDarkMode = useTheme().sanity.color.dark

@@ -1,11 +1,13 @@
-import {Flex, Card, Spinner} from '@sanity/ui'
+import {Card, Flex, Spinner} from '@sanity/ui'
+import React from 'react'
 import {Preview, SanityDocument, StringInputProps, useSchema} from 'sanity'
-import {useListeningQuery, Feedback} from 'sanity-plugin-utils'
+import {Feedback, useListeningQuery} from 'sanity-plugin-utils'
 
 import EditButton from './EditButton'
 
+// eslint-disable-next-line no-warning-comments
 // TODO: Update this to use the same component as the Tool
-export default function Field(props: StringInputProps) {
+export default function Field(props: StringInputProps): React.JSX.Element {
   const schema = useSchema()
   const {data, loading, error} = useListeningQuery<SanityDocument>(
     `*[_id in [$id, $draftId]]|order(_updatedAt)[0]`,

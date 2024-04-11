@@ -24,7 +24,7 @@ export type WorkflowConfig = {
 
 export function defineStates<
   Id extends string,
-  States extends StateCheck<Id, States>[]
+  States extends StateCheck<Id, States>[],
 >(states: States): States {
   return states
 }

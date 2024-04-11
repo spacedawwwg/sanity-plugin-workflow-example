@@ -9,5 +9,6 @@ export default function initialRank(lastRankValue = ``): string {
       : LexoRank.min()
   const nextRank = lastRank.genNext().genNext()
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (nextRank as any).value
 }

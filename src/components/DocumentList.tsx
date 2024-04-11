@@ -1,6 +1,6 @@
 import {Draggable, DraggableStyle} from '@hello-pangea/dnd'
 import {useVirtualizer, VirtualItem} from '@tanstack/react-virtual'
-import {CSSProperties, useMemo, useRef} from 'react'
+import React, {CSSProperties, useMemo, useRef} from 'react'
 import {CurrentUser} from 'sanity'
 import {UserExtended} from 'sanity-plugin-utils'
 
@@ -54,7 +54,9 @@ function getStyle(
   }
 }
 
-export default function DocumentList(props: DocumentListProps) {
+export default function DocumentList(
+  props: DocumentListProps
+): React.JSX.Element | null {
   const {
     data = [],
     invalidDocumentIds,

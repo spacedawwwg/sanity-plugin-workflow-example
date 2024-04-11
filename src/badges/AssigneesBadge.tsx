@@ -27,7 +27,7 @@ export function AssigneesBadge(
 
   const {assignees} = metadata ?? []
   const hasMe = currentUser
-    ? assignees.some((assignee) => assignee === currentUser.id)
+    ? assignees.some((assignee: string) => assignee === currentUser.id)
     : false
   const assigneesCount = hasMe ? assignees.length - 1 : assignees.length
   const assigneeUsers = userList.filter((user) => assignees.includes(user.id))

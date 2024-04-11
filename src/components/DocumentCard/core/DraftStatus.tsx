@@ -1,11 +1,14 @@
 import {EditIcon} from '@sanity/icons'
 import {PreviewValue, SanityDocument} from '@sanity/types'
 import {Box, Text, Tooltip} from '@sanity/ui'
+import React from 'react'
 import {TextWithTone} from 'sanity'
 
 import {TimeAgo} from './TimeAgo'
 
-export function DraftStatus(props: {document?: PreviewValue | Partial<SanityDocument> | null}) {
+export function DraftStatus(props: {
+  document?: PreviewValue | Partial<SanityDocument> | null
+}): React.JSX.Element {
   const {document} = props
   const updatedAt = document && '_updatedAt' in document && document._updatedAt
 
@@ -24,7 +27,12 @@ export function DraftStatus(props: {document?: PreviewValue | Partial<SanityDocu
         </Box>
       }
     >
-      <TextWithTone tone="caution" dimmed={!document} muted={!document} size={1}>
+      <TextWithTone
+        tone="caution"
+        dimmed={!document}
+        muted={!document}
+        size={1}
+      >
         <EditIcon />
       </TextWithTone>
     </Tooltip>

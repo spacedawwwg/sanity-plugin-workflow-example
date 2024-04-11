@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import {DragHandleIcon} from '@sanity/icons'
 import {Box, Card, CardTone, Flex, Stack, useTheme} from '@sanity/ui'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import {
   SchemaType,
   useSchema,
@@ -32,7 +32,7 @@ type DocumentCardProps = {
   userList: User[]
 }
 
-export function DocumentCard(props: DocumentCardProps) {
+export function DocumentCard(props: DocumentCardProps): React.JSX.Element {
   const {
     isDragDisabled,
     isPatching,

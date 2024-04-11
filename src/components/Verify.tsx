@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import {Button, useToast} from '@sanity/ui'
 import {LexoRank} from 'lexorank'
 import React from 'react'
@@ -18,7 +19,7 @@ type VerifyProps = {
 // This component checks the validity of the data in the Kanban
 // It will only render something it there is invalid date
 // And will render buttons to fix the data
-export default function Verify(props: VerifyProps) {
+export default function Verify(props: VerifyProps): React.JSX.Element {
   const {data, userList, states} = props
   const client = useClient({apiVersion: API_VERSION})
   const toast = useToast()
@@ -189,7 +190,7 @@ export default function Verify(props: VerifyProps) {
         status: 'success',
       })
     },
-    [data, client, toast]
+    [client, toast]
   )
 
   // A document could be deleted and the workflow metadata left behind

@@ -1,5 +1,6 @@
 import {ArrowLeftIcon, ArrowRightIcon} from '@sanity/icons'
 import {useToast} from '@sanity/ui'
+import React from 'react'
 import {useCurrentUser, useValidationStatus} from 'sanity'
 import {DocumentActionProps, useClient} from 'sanity'
 
@@ -9,7 +10,10 @@ import {arraysContainMatchingString} from '../helpers/arraysContainMatchingStrin
 import {State} from '../types'
 
 // eslint-disable-next-line complexity
-export function UpdateWorkflow(props: DocumentActionProps, actionState: State) {
+export function UpdateWorkflow(
+  props: DocumentActionProps,
+  actionState: State
+): React.JSX.Element | null {
   const {id, type} = props
 
   const user = useCurrentUser()
@@ -21,6 +25,7 @@ export function UpdateWorkflow(props: DocumentActionProps, actionState: State) {
   const currentState = states.find((s) => s.id === metadata?.state)
   const {assignees = []} = metadata ?? {}
 
+  // eslint-disable-next-line no-warning-comments
   // TODO: Shouldn't the document action props contain this?
   const {validation, isValidating} = useValidationStatus(id, type)
   const hasValidationErrors =
@@ -109,6 +114,8 @@ export function UpdateWorkflow(props: DocumentActionProps, actionState: State) {
   }
 
   return {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     icon: DirectionIcon,
     disabled:
       loading ||

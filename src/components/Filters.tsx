@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import {FilterIcon, ResetIcon, UserIcon} from '@sanity/icons'
 import {
   Box,
@@ -11,7 +12,7 @@ import {
   Stack,
   Text,
 } from '@sanity/ui'
-import {useCallback, useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import {useCurrentUser, UserAvatar, useSchema} from 'sanity'
 import {UserExtended, UserSelectMenu} from 'sanity-plugin-utils'
 
@@ -25,7 +26,9 @@ type FiltersProps = {
   toggleSelectedSchemaType: (schemaType: string) => void
 }
 
-export default function Filters(props: FiltersProps) {
+export default function Filters(
+  props: FiltersProps
+): React.ReactElement | null {
   const {
     uniqueAssignedUsers = [],
     selectedUserIds,

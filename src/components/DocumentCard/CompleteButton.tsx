@@ -10,7 +10,9 @@ type CompleteButtonProps = {
   disabled: boolean
 }
 
-export default function CompleteButton(props: CompleteButtonProps) {
+export default function CompleteButton(
+  props: CompleteButtonProps
+): React.JSX.Element {
   const {documentId, disabled = false} = props
   const client = useClient({apiVersion: API_VERSION})
   const toast = useToast()

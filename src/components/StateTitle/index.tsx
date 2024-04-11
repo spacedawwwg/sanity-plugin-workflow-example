@@ -1,5 +1,6 @@
 import {InfoOutlineIcon, UserIcon} from '@sanity/icons'
 import {Badge, BadgeTone, Box, Card, Flex, Text} from '@sanity/ui'
+import React from 'react'
 import styled, {css} from 'styled-components'
 
 import {State} from '../../types'
@@ -22,7 +23,7 @@ type StateTitleProps = {
   documentCount: number
 }
 
-export default function StateTitle(props: StateTitleProps) {
+export default function StateTitle(props: StateTitleProps): React.JSX.Element {
   const {
     state,
     requireAssignment,

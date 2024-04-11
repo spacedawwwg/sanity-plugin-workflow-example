@@ -2,12 +2,15 @@ import {SplitVerticalIcon} from '@sanity/icons'
 import {useToast} from '@sanity/ui'
 import {LexoRank} from 'lexorank'
 import {useCallback, useState} from 'react'
+import React from 'react'
 import {DocumentActionProps, useClient} from 'sanity'
 
 import {useWorkflowContext} from '../components/WorkflowContext'
 import {API_VERSION} from '../constants'
 
-export function BeginWorkflow(props: DocumentActionProps) {
+export function BeginWorkflow(
+  props: DocumentActionProps
+): React.JSX.Element | null {
   const {id, draft} = props
   const {metadata, loading, error, states} = useWorkflowContext(id)
   const client = useClient({apiVersion: API_VERSION})
@@ -52,6 +55,8 @@ export function BeginWorkflow(props: DocumentActionProps) {
   }
 
   return {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     icon: SplitVerticalIcon,
     type: 'dialog',
     disabled: metadata || loading || error || beginning || complete,

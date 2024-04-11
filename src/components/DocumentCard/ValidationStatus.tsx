@@ -1,13 +1,16 @@
 import {ErrorOutlineIcon, WarningOutlineIcon} from '@sanity/icons'
 import {ValidationMarker} from '@sanity/types'
 import {Box, Text, Tooltip} from '@sanity/ui'
+import React from 'react'
 import {TextWithTone} from 'sanity'
 
 type ValidationStatusProps = {
   validation: ValidationMarker[]
 }
 
-export function ValidationStatus(props: ValidationStatusProps) {
+export function ValidationStatus(
+  props: ValidationStatusProps
+): React.JSX.Element | null {
   const {validation = []} = props
 
   if (!validation.length) {

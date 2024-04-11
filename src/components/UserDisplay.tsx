@@ -1,9 +1,9 @@
-import React from 'react'
-import {Button, Grid, Popover, useClickOutside} from '@sanity/ui'
 import {AddIcon} from '@sanity/icons'
+import {Button, Grid, Popover, useClickOutside} from '@sanity/ui'
+import React from 'react'
 
-import AvatarGroup from './DocumentCard/AvatarGroup'
 import {User} from '../types'
+import AvatarGroup from './DocumentCard/AvatarGroup'
 import UserAssignment from './UserAssignment'
 
 type UserDisplayProps = {
@@ -13,7 +13,9 @@ type UserDisplayProps = {
   disabled?: boolean
 }
 
-export default function UserDisplay(props: UserDisplayProps) {
+export default function UserDisplay(
+  props: UserDisplayProps
+): React.JSX.Element {
   const {assignees, userList, documentId, disabled = false} = props
 
   const [button] = React.useState(null)
@@ -27,9 +29,16 @@ export default function UserDisplay(props: UserDisplayProps) {
 
   return (
     <Popover
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       ref={setPopover}
-      content={<UserAssignment userList={userList} assignees={assignees} documentId={documentId} />}
+      content={
+        <UserAssignment
+          userList={userList}
+          assignees={assignees}
+          documentId={documentId}
+        />
+      }
       portal
       open={isOpen}
     >
@@ -48,7 +57,9 @@ export default function UserDisplay(props: UserDisplayProps) {
       ) : (
         <Grid>
           <Button onClick={open} padding={0} mode="bleed" disabled={disabled}>
-            <AvatarGroup users={userList.filter((u) => assignees.includes(u.id))} />
+            <AvatarGroup
+              users={userList.filter((u) => assignees.includes(u.id))}
+            />
           </Button>
         </Grid>
       )}

@@ -1,10 +1,10 @@
-import {useCallback, useContext, useState} from 'react'
+import React, {useCallback, useContext, useState} from 'react'
 import {createContext} from 'react'
 import {LayoutProps} from 'sanity'
 
 import {DEFAULT_CONFIG} from '../constants'
 import {useWorkflowMetadata} from '../hooks/useWorkflowMetadata'
-import {KeyedMetadata, WorkflowConfig} from '../types'
+import {KeyedMetadata, Metadata, WorkflowConfig} from '../types'
 
 export type WorkflowContextValue = Required<WorkflowConfig> & {
   data: KeyedMetadata
@@ -13,6 +13,7 @@ export type WorkflowContextValue = Required<WorkflowConfig> & {
   ids: string[]
   addId: (id: string) => void
   removeId: (id: string) => void
+  metadata?: Metadata
 }
 
 const WorkflowContext = createContext<WorkflowContextValue>({
@@ -23,12 +24,13 @@ const WorkflowContext = createContext<WorkflowContextValue>({
   addId: () => null,
   removeId: () => null,
   ...DEFAULT_CONFIG,
+  metadata: undefined,
 })
 
-export function useWorkflowContext(id?: string) {
+export function useWorkflowContext(id?: string): WorkflowContextValue {
   const current = useContext(WorkflowContext)
 
-  return {...current, metadata: id ? current.data[id] : null}
+  return {...current, metadata: id ? current.data[id] : undefined}
 }
 
 type WorkflowProviderProps = LayoutProps & {workflow: Required<WorkflowConfig>}
@@ -39,7 +41,9 @@ type WorkflowProviderProps = LayoutProps & {workflow: Required<WorkflowConfig>}
  * Instead, each document "signals" its ID up to the provider, which then registers a single listener
  * This is performed inside of a component loaded at the root level of the Document Form
  */
-export function WorkflowProvider(props: WorkflowProviderProps) {
+export function WorkflowProvider(
+  props: WorkflowProviderProps
+): React.JSX.Element {
   const [ids, setIds] = useState<string[]>([])
   const addId = useCallback(
     (id: string) =>
